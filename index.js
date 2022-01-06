@@ -18,6 +18,18 @@ app.get('/', (req, res) => {
 // Returns dates in different time formats
 
 app.get('/api/:date?', (req, res) => {
+
+    // wrapping the content with a try an catch block
+  try{
+
+    // handling errors
+    if(!req.params.date){
+        return res.json({
+        "unix": new Date().getTime(),
+        "utc": new Date()
+      })
+    }
+    
     // regex machting special characters to check date time format 
     const result = req.params.date.match(regex)
 
@@ -32,15 +44,20 @@ app.get('/api/:date?', (req, res) => {
     }
 
     // else it means date in milliseconds format and needs int parsing
-    else{
+    else {
         const date = new Date(parseInt(req.params.date))
         res.json({
             "unix": date.getTime(),   
             "utc": date.toUTCString() 
         });
     }
+  } catch(err) {
+    res.json({error: "Invalid Date"})
+  }
 
 })
+
+
 
 
 app.listen(3000, () => {

@@ -32,7 +32,7 @@ const validateTime = (req, res, next) => {
   }
 }
 
-const regex = /[-, ]/g
+const regex = /[-, :]/g
 
 
 

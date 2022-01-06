@@ -1,9 +1,7 @@
 ## TimeStamp App
 #### Web app with nodejs backend API allowing user to reconver the date time in __UTC__ and __Unix__ ( **Milliseconds** ) 
-<br>
 
 ___
-<br>
 
 > Challange made possibe with [freecodecamp](https://freecodecamp.org)
 
@@ -19,7 +17,7 @@ ___
 ## App screenshots 
 <br>
 
-<img src="/images/mainscreen.png" width="100px">
+<img src="/images/mainscreen.png" width="500px">
 
 <br>
 

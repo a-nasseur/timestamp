@@ -41,6 +41,11 @@ body {
 
 .header a {
     color: #C449C2;
+    transition: all .3s ease;
+}
+
+.header a:hover {
+    color: #4A403A;
 }
 
 .input input {

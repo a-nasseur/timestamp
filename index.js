@@ -1,14 +1,42 @@
+const { json } = require('express');
 const express = require('express');
 const app = express();
 
+// servig static files middleware
 app.use('/public', express.static(__dirname + '/public'));
+
+// validating date input URL
+const validateTime = (req, res, next) => {
+  const time = new Date(req.params.date)
+  const timeInt = new Date(parseInt(req.params.date))
+
+  if(!req.params.date){
+      return res.json({
+      "unix": new Date().getTime(),
+      "utc": new Date()
+    })  
+  }
+
+  else if(time != "Invalid Date"){
+    console.log(time)
+    next();
+  }
+  else if(timeInt != "Invalid Date"){
+    console.log(timeInt)
+    next();
+  }
+  else {
+    return res.json({
+      error: "Invalid Date"
+    })
+  }
+}
 
 const regex = /[-, ]/g
 
 
 
 app.get('/', (req, res) => {
-    console.log(req.query)
     res.sendFile(__dirname + '/views/index.html');
 });
 
@@ -17,24 +45,15 @@ app.get('/', (req, res) => {
 // METHOD GET
 // Returns dates in different time formats
 
-app.get('/api/:date?', (req, res) => {
+app.get('/api/:date?', validateTime ,(req, res) => {
 
     // wrapping the content with a try an catch block
   try{
 
-    // handling errors
-    if(!req.params.date){
-        return res.json({
-        "unix": new Date().getTime(),
-        "utc": new Date()
-      })
-    }
-    
     // regex machting special characters to check date time format 
     const result = req.params.date.match(regex)
 
     // if result contains special caracters
-    console.log(result)
     if(result){
         const datetime = new Date(req.params.date)
         res.json({
@@ -44,20 +63,21 @@ app.get('/api/:date?', (req, res) => {
     }
 
     // else it means date in milliseconds format and needs int parsing
-    else {
+    else if(!result) {
         const date = new Date(parseInt(req.params.date))
         res.json({
             "unix": date.getTime(),   
             "utc": date.toUTCString() 
         });
     }
+
   } catch(err) {
     res.json({error: "Invalid Date"})
   }
 
+
+
 })
-
-
 
 
 app.listen(3000, () => {

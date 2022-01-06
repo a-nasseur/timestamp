@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microservice | TimeStamp</title>
+    <link rel="stylesheet" href="/public/styles.css">
+</head>
+<body>
+    <div class="header">
+        <h1 class="title">TimeStamp MicroService</h1>
+        <p>GET TimeStamp in <b>Unix</b> and <b>UTC</b>, using the <b>/api/:date?</b> link to access our API</p>
+        <h4 class="example">Examples</h4>
+        <p><a href="/api/1988-10-28">/api/1988-10-28  </a> <br> <a href="/api/594000000000">/api/594000000000</a></p>
+        <div class="input">
+            <input type="text" placeholder="Enter a date (no need /api/)" name="date" id="input">
+            <button class="btn" id="btn">Submit</button>
+        </div>  
+    </div> 
+
+    <script src="/public/main.js"></script>
+</body>
+</html>

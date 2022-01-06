@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+body {
+    margin: auto;
+    padding: 0;
+    max-width: 968px;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+.header {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFF9F9;
+    height: 400px;
+    border-radius: 20px;
+}
+
+.title {
+    font-weight: 400;
+    font-size: 3.2rem;
+    color: #4A403A;
+    text-align: center;
+    padding: 12px;
+}
+
+
+.title::after {
+    content: '';
+    border-bottom: 1px solid black;
+    width: 200px;
+}
+
+.example {
+    padding: 10px;
+    border-bottom: black 2px solid;
+}
+
+.header a {
+    color: #C449C2;
+}
+
+.input input {
+    color: #4A403A;
+    padding: 12px;
+}
+
+.input .btn {
+    border: none;
+    font-weight: bold;
+    background-color: #F0ECE3;
+    padding: 14px;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.input .btn:hover {
+    border-radius: 0px;
+    background-color: #C449C2;
+    color: white;
+
+}
